@@ -30,14 +30,16 @@ const createRouter = function (collection) {
 
     router.post("/", (req, res) => {
         const newData = req.body
+        console.log(newData)
         collection
             .insertOne(newData)
             .then(result => res.json({_id: result.insertedId}))
             .catch(handleError(res))
     })
 
-    router.delete("/", (req, res) => {
+    router.delete("/:id", (req, res) => {
         const id = req.params.id
+        console.log(id)
         collection
             .deleteOne({_id: new ObjectId(id)})
             .then(result => res.json(result))

@@ -1,0 +1,72 @@
+import React, { useState } from "react";
+
+const BookingForm = ({ addBooking }) => {
+    const [formData, setFormData] = useState({
+        guestName: "",
+        guestEmailAddress: "",
+        checkedInStatus: false,
+    });
+
+    const onChange = (e) => {
+        const newFormData = { ...formData };
+        newFormData[e.target.name] = e.target.value;
+        setFormData(newFormData);
+    };
+
+    const onCheckboxChange = e => {
+        const newFormData = { ...formData };
+        newFormData[e.target.name] = e.target.checked;
+        setFormData(newFormData);
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        addBooking(formData);
+        setFormData({
+            guestName: "",
+            guestEmailAddress: "",
+            checkedInStatus: false,
+        });
+    };
+
+    return (
+        <>
+            <h2>Add a new booking</h2>
+            <form onSubmit={handleSubmit}>
+                <div className="formWrap">
+                    <label htmlFor="name">Name:</label>
+                    <input
+                        onChange={onChange}
+                        type="text"
+                        id="name"
+                        name="guestName"
+                        value={formData.guestName}
+                    />
+                </div>
+                <div className="formWrap">
+                    <label htmlFor="email">Email:</label>
+                    <input
+                        onChange={onChange}
+                        type="text"
+                        id="email"
+                        name="guestEmailAddress"
+                        value={formData.guestEmailAddress}
+                    />
+                </div>
+                <div className="formWrap">
+                    <label htmlFor="checked-in">Checked In?</label>
+                    <input
+                        onChange={onCheckboxChange}
+                        type="checkbox"
+                        id="checked-in"
+                        name="checkedInStatus"
+                        checked={formData.checkedInStatus}
+                    />
+                </div>
+                <input type="submit" value="Submit" />
+            </form>
+        </>
+    );
+};
+
+export default BookingForm;

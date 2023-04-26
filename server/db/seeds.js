@@ -3,7 +3,25 @@ use hotel;
 db.dropDatabase();
 
 db.bookings.insertOne({
-    guest_name: "Jasper",
-    guest_email_address: "jasper@gmail.com",
-    checked_in_status: "false"
+    guestName: "Jasper",
+    guestEmailAddress: "jasper@gmail.com",
+    checkedInStatus: false
+});
+
+db.bookings.insertOne({
+    guestName: "Greg",
+    guestEmailAddress: "greghead@gmail.com",
+    checkedInStatus: false
+});
+
+db.bookings.insertOne({
+    guestName: "Wenjing",
+    guestEmailAddress: "wenjing@gmail.com",
+    checkedInStatus: false
+});
+
+db.bookings.insertOne({
+    guestName: "Paul",
+    guestEmailAddress: "paul@gmail.com",
+    checkedInStatus: false
 });
