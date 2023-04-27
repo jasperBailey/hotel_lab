@@ -7,20 +7,34 @@ const BookingForm = ({ addBooking }) => {
         checkedInStatus: false,
     });
 
+    const isValidEmail = (email) => {
+        const regex =
+            /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+        return regex.test(email);
+    };
+
     const onChange = (e) => {
         const newFormData = { ...formData };
         newFormData[e.target.name] = e.target.value;
         setFormData(newFormData);
     };
 
-    const onCheckboxChange = e => {
+    const onCheckboxChange = (e) => {
         const newFormData = { ...formData };
         newFormData[e.target.name] = e.target.checked;
         setFormData(newFormData);
-    }
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        if (!formData.guestName) {
+            alert("Guests need names, dummy.")
+            return
+        }
+        if (!isValidEmail(formData.guestEmailAddress)) {
+            alert("Invalid email. Try harder.");
+            return
+        }
         addBooking(formData);
         setFormData({
             guestName: "",

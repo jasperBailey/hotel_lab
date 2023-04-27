@@ -1,15 +1,29 @@
-require('./bookingElement.css')
+require("./bookingElement.css");
 
-const BookingElement = ({booking, removeBooking}) => {
+const BookingElement = ({ booking, removeBooking, updateBooking }) => {
     const handleDelete = () => {
-        removeBooking(booking._id)
-    }
+        removeBooking(booking._id);
+    };
+
+    const handleUpdate = () => {
+        updateBooking(booking._id, {
+            checkedInStatus: !booking.checkedInStatus,
+        });
+    };
 
     return (
         <>
-            <li>
-                <h3>BookingElement</h3>
-                <p>{booking.guestName}</p>
+            <li
+                className={
+                    booking.checkedInStatus ? "checked-in" : "not-checked-in"
+                }
+            >
+                <h3>{booking.guestName}</h3>
+                <p>{booking.guestEmailAddress}</p>
+
+                <button onClick={handleUpdate}>
+                    {booking.checkedInStatus ? "Check Out" : "Check In"}
+                </button>
                 <button onClick={handleDelete}>Delete Booking</button>
             </li>
         </>
