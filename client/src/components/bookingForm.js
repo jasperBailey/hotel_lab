@@ -28,12 +28,12 @@ const BookingForm = ({ addBooking }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (!formData.guestName) {
-            alert("Guests need names, dummy.")
-            return
+            alert("Guests need names, dummy.");
+            return;
         }
         if (!isValidEmail(formData.guestEmailAddress)) {
             alert("Invalid email. Try harder.");
-            return
+            return;
         }
         addBooking(formData);
         setFormData({

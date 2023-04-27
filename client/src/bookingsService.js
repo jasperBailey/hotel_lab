@@ -32,5 +32,5 @@ export const putBooking = (id, payload) => {
         method: "PUT",
         body: JSON.stringify(payload),
         headers: { "Content-Type": "application/json" },
-    } );
+    });
 };

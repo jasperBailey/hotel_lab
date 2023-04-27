@@ -1,7 +1,7 @@
 import BookingElement from "../components/bookingElement";
 require("./bookingsContainer.css");
 
-const BookingsContainer = ({ bookings, removeBooking, updateBooking}) => {
+const BookingsContainer = ({ bookings, removeBooking, updateBooking }) => {
     return (
         <>
             <h2>Bookings Container</h2>

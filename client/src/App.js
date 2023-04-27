@@ -34,7 +34,7 @@ function App() {
         );
         putBooking(id, payload)
             .then(() => getBooking(id))
-            .then(res => setBookings([...filteredBookings, res]))
+            .then((res) => setBookings([...filteredBookings, res]));
     };
 
     return (

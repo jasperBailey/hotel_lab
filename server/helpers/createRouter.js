@@ -16,44 +16,44 @@ const createRouter = function (collection) {
         collection
             .find()
             .toArray()
-            .then(docs => res.json(docs))
+            .then((docs) => res.json(docs))
             .catch(handleError(res));
     });
 
     router.get("/:id", (req, res) => {
-        const id = req.params.id
+        const id = req.params.id;
         collection
-            .findOne({_id: new ObjectId(id)})
-            .then(doc => res.json(doc))
-            .catch(handleError(res))
-    })
+            .findOne({ _id: new ObjectId(id) })
+            .then((doc) => res.json(doc))
+            .catch(handleError(res));
+    });
 
     router.post("/", (req, res) => {
-        const newData = req.body
-        console.log(newData)
+        const newData = req.body;
+        console.log(newData);
         collection
             .insertOne(newData)
-            .then(result => res.json({_id: result.insertedId}))
-            .catch(handleError(res))
-    })
+            .then((result) => res.json({ _id: result.insertedId }))
+            .catch(handleError(res));
+    });
 
     router.delete("/:id", (req, res) => {
-        const id = req.params.id
-        console.log(id)
+        const id = req.params.id;
+        console.log(id);
         collection
-            .deleteOne({_id: new ObjectId(id)})
-            .then(result => res.json(result))
-            .catch(handleError(res))
-    })
+            .deleteOne({ _id: new ObjectId(id) })
+            .then((result) => res.json(result))
+            .catch(handleError(res));
+    });
 
     router.put("/:id", (req, res) => {
-        const id = req.params.id
-        const updatedData = req.body
+        const id = req.params.id;
+        const updatedData = req.body;
         collection
-            .updateOne({_id: new ObjectId(id)}, {$set: updatedData})
-            .then(doc => res.json(doc))
-            .catch(handleError(res))
-    })
+            .updateOne({ _id: new ObjectId(id) }, { $set: updatedData })
+            .then((doc) => res.json(doc))
+            .catch(handleError(res));
+    });
 
     return router;
 };
